@@ -1,0 +1,37 @@
+name: Publish verified Windows release
+on:
+  push:
+    branches: [main]
+    paths: [release/windows.json]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: windows-release
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Download and verify approved package
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 "https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$GITHUB_SHA/release/windows.json" -o release.json
+          version="$(jq -er .version release.json)"
+          [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          expected="$(jq -er .sha256 release.json)"
+          [[ "$expected" =~ ^[a-fA-F0-9]{64}$ ]]
+          name="STARDUST-ARENA-PC-$version.zip"
+          curl --fail --location --retry 3 --max-time 900 "https://stellatcg-online.bigstarlab.workers.dev/downloads/$name" -o "$name"
+          printf '%s  %s\n' "$expected" "$name" > "$name.sha256.txt"
+          sha256sum --check "$name.sha256.txt"
+          jq -er .notes release.json > notes.md
+          if gh release view "v$version" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Release already exists; refusing to overwrite." >&2
+            exit 1
+          fi
+          gh release create "v$version" "$name" "$name.sha256.txt" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "스타더스트 아레나 $version" --notes-file notes.md --latest

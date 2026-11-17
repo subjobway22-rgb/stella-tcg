@@ -2,9 +2,23 @@
 
 스텔라이브 팬게임 · Windows PC 카드 배틀
 
+![스타더스트 아레나 0.5.0 — 너의 응원으로, 무대를 뒤집어.](media/0.5.0/hero.jpg)
+
+**[플레이 화면 · 공유용 이미지 모음](docs/promo/README.md)**
+
 ## 다운로드
 
 **[최신 PC 버전 0.5.0 다운로드](https://stellatcg-online.bigstarlab.workers.dev/)** · [GitHub 릴리스](https://github.com/subjobway22-rgb/stella-tcg/releases)
+
+## 플레이 화면
+
+팬과 함께 아이돌을 강화하고, 차례마다 결정적인 카드를 선택하세요.
+
+![팬 2칸·카드 3장·깜짝 1장으로 펼치는 실제 배틀 화면](media/0.5.0/battle.jpg)
+
+서로의 카드 효과와 최종 파워, 실제 스텔라 감소량을 확인할 수 있습니다.
+
+![서로의 사용 카드와 승패 이유를 보여 주는 실제 결과 화면](media/0.5.0/result.jpg)
 
 ## 0.5.0 변경점
 

@@ -2,7 +2,7 @@ name: Publish game promotional images
 on:
   push:
     branches: [main]
-    paths: [release/promo.json]
+    paths: [release/promo.json, .github/workflows/publish-game-promo.yml]
   workflow_dispatch:
 permissions:
   contents: write
@@ -22,7 +22,7 @@ jobs:
         run: |
           set -euo pipefail
           python3 - <<'PY'
-          import hashlib, json, pathlib, re, urllib.request
+          import hashlib, json, pathlib, re, subprocess
           manifest=json.loads(pathlib.Path('release/promo.json').read_text())
           version=manifest['version']
           assert re.fullmatch(r'\d+\.\d+\.\d+', version)
@@ -31,7 +31,7 @@ jobs:
           assert {a['name'] for a in manifest['assets']} == {'hero.jpg','battle.jpg','lobby.jpg','result.jpg'}
           for asset in manifest['assets']:
               url=f"https://stellatcg-online.bigstarlab.workers.dev/promo/{version}/{asset['name']}"
-              data=urllib.request.urlopen(url,timeout=60).read()
+              data=subprocess.check_output(['curl','--fail','--location','--retry','3','--max-time','60',url])
               assert hashlib.sha256(data).hexdigest()==asset['sha256'], asset['name']
               assert data[:2]==b'\xff\xd8', 'Expected JPEG'
               (target/asset['name']).write_bytes(data)

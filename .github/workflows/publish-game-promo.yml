@@ -1,0 +1,71 @@
+name: Publish game promotional images
+on:
+  push:
+    branches: [main]
+    paths: [release/promo.json]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: game-promotional-images
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Download verified promotional assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib, json, pathlib, re, urllib.request
+          manifest=json.loads(pathlib.Path('release/promo.json').read_text())
+          version=manifest['version']
+          assert re.fullmatch(r'\d+\.\d+\.\d+', version)
+          target=pathlib.Path('media')/version
+          target.mkdir(parents=True,exist_ok=True)
+          assert {a['name'] for a in manifest['assets']} == {'hero.jpg','battle.jpg','lobby.jpg','result.jpg'}
+          for asset in manifest['assets']:
+              url=f"https://stellatcg-online.bigstarlab.workers.dev/promo/{version}/{asset['name']}"
+              data=urllib.request.urlopen(url,timeout=60).read()
+              assert hashlib.sha256(data).hexdigest()==asset['sha256'], asset['name']
+              assert data[:2]==b'\xff\xd8', 'Expected JPEG'
+              (target/asset['name']).write_bytes(data)
+          pathlib.Path('README.md').write_text(manifest['readme'],encoding='utf-8')
+          pathlib.Path('docs/promo').mkdir(parents=True,exist_ok=True)
+          pathlib.Path('docs/promo/README.md').write_text(manifest['gallery'],encoding='utf-8')
+          PY
+      - name: Publish repository introduction and screenshots
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add media README.md docs/promo/README.md
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update game introduction and promotional images'
+            git push origin HEAD:main
+          fi
+      - name: Add images to the existing download release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(jq -er .version release/promo.json)"
+          [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          gh release view "v$version" --repo "$GITHUB_REPOSITORY" --json body --jq .body > /tmp/old-release-body.md
+          python3 - <<'PY'
+          import json,pathlib,re
+          manifest=json.loads(pathlib.Path('release/promo.json').read_text())
+          old=pathlib.Path('/tmp/old-release-body.md').read_text()
+          old=re.sub(r'<!-- STARDUST-PROMO-START -->.*?<!-- STARDUST-PROMO-END -->\s*','',old,flags=re.S)
+          body='<!-- STARDUST-PROMO-START -->\n'+manifest['releaseIntro']+'\n<!-- STARDUST-PROMO-END -->\n\n'+old
+          pathlib.Path('/tmp/new-release-body.md').write_text(body,encoding='utf-8')
+          PY
+          gh release edit "v$version" --repo "$GITHUB_REPOSITORY" --notes-file /tmp/new-release-body.md
+

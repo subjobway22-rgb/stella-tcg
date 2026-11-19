@@ -1,0 +1,29 @@
+{
+  "version": "0.5.1",
+  "assets": [
+    {
+      "name": "hero.jpg",
+      "size": 629910,
+      "sha256": "883eadd66bbbfe6956e97ee60fa91da5fa6101fa904b1894c85ca87ffeeb8ec2"
+    },
+    {
+      "name": "battle.jpg",
+      "size": 536287,
+      "sha256": "3f5fef10267c01c6f56534a867c115893269e2703d1743b3523fac31b6a2adf5"
+    },
+    {
+      "name": "lobby.jpg",
+      "size": 366568,
+      "sha256": "478ccf87ee5382aee14125e65a6d7a5f64c2cb863b26a1966283da24a011c8a8"
+    },
+    {
+      "name": "result.jpg",
+      "size": 290556,
+      "sha256": "123daa240329cbc4e5f57562c4f9058660da1ec74a515470ec370d418ebc2abd"
+    }
+  ],
+  "readme": "# STARDUST ARENA\n\n스텔라이브 팬게임 · Windows PC 카드 배틀\n\n[![스타더스트 아레나 — 너의 응원으로, 무대를 뒤집어. 홍보용 키비주얼](media/0.5.1/hero.jpg)](https://github.com/subjobway22-rgb/stella-tcg/releases/download/v0.5.1/STARDUST-ARENA-PC-0.5.1.zip)\n\n## 지금 플레이하기\n\n**[Windows PC 0.5.1 다운로드 · ZIP 약 323MB](https://github.com/subjobway22-rgb/stella-tcg/releases/download/v0.5.1/STARDUST-ARENA-PC-0.5.1.zip)**  \n[최신 릴리스 · 업데이트 내용](https://github.com/subjobway22-rgb/stella-tcg/releases/tag/v0.5.1) · [홍보 이미지 모음](docs/promo/README.md)\n\n**팬과 함께 아이돌을 강화하고, 한 차례 3장의 카드로 승부하세요.**\n\n아이돌과 스타터 덱을 고른 뒤 아르냥의 안내로 시작할 수 있습니다. AI 연습, 온라인 친선전, 랭크 배틀을 지원합니다.\n\n## 한 차례의 선택이 만드는 무대\n\n팬 2칸, 지속·깜짝 존 4칸. 상대 무대와 남은 카드 사용 횟수를 보고 다음 한 수를 선택하세요. 깜짝카드는 1장까지 세트할 수 있습니다.\n\n![0.5.1 실제 배틀 화면 — 상대 무대는 위쪽, 내 무대는 아래쪽이며 카드와 남은 사용 횟수를 확인할 수 있습니다](media/0.5.1/battle.jpg)\n\n## 왜 이겼는지, 한눈에\n\n내 정보는 왼쪽, 상대 정보는 오른쪽. 사용한 카드의 효과부터 최종 파워와 스텔라포인트 감소량까지 확인할 수 있습니다.\n\n![0.5.1 실제 스테이지 결과 — 내 파워 1200, 상대 파워 800으로 상대 스텔라 400 감소](media/0.5.1/result.jpg)\n\n## 나만의 아이돌, 나만의 덱\n\n로비에서 무대를 시작하거나 덱 편집, 카드 보관함, 카드 뽑기, 성장·보상으로 이동하세요. 덱은 30장 이상으로 구성합니다.\n\n![0.5.1 실제 로비 — 아이돌 프로필과 무대 시작, 덱 편집, 카드 보관함, 카드 뽑기, 성장·보상 메뉴](media/0.5.1/lobby.jpg)\n\n## 실행 방법\n\n1. ZIP 파일을 내려받아 **폴더 전체를 압축 해제**합니다.\n2. 폴더 안의 **STARDUST Launcher.exe**를 실행합니다.\n3. 아이돌과 스타터 덱을 선택하고 아르냥의 안내로 시작하세요.\n\nWindows 10/11 64비트용입니다. 기존 사용자는 런처에서 업데이트할 수 있으며 계정·덱·랭크 데이터는 유지됩니다. 온라인·랭크에는 인터넷 연결이 필요하고, 사람과의 랜덤 매칭은 상대 플레이어가 대기 중이어야 연결됩니다. 계정 복구 코드는 별도로 보관하세요.\n\n대표 배너는 홍보용 일러스트이며, 배틀·결과·로비 이미지는 0.5.1 게임 실행 화면입니다.\n\n## 오류 제보\n\n화면 캡처와 아래 로그를 함께 전달해 주세요.\n\n`%USERPROFILE%\\AppData\\LocalLow\\STELLA Fan Project\\스타더스트 아레나\\Player.log`\n",
+  "gallery": "# 스타더스트 아레나 0.5.1 — 홍보 이미지\n\n**너의 응원으로, 무대를 뒤집어.**\n\n[게임 다운로드](https://github.com/subjobway22-rgb/stella-tcg/releases/download/v0.5.1/STARDUST-ARENA-PC-0.5.1.zip) · [게임 소개](../../README.md)\n\n대표 배너는 게임 내 사용자 그림을 참고해 생성한 홍보용 일러스트입니다. 나머지 세 이미지는 실제 0.5.1 게임 실행 화면입니다.\n\n## 대표 배너\n\n![스타더스트 아레나 홍보용 키비주얼](../../media/0.5.1/hero.jpg)\n\n## 배틀 화면\n\n![실제 배틀 화면](../../media/0.5.1/battle.jpg)\n\n## 스테이지 결과\n\n![실제 스테이지 결과](../../media/0.5.1/result.jpg)\n\n## 로비\n\n![실제 로비](../../media/0.5.1/lobby.jpg)\n\n이미지 저장: [대표 배너](https://raw.githubusercontent.com/subjobway22-rgb/stella-tcg/main/media/0.5.1/hero.jpg) · [배틀](https://raw.githubusercontent.com/subjobway22-rgb/stella-tcg/main/media/0.5.1/battle.jpg) · [결과](https://raw.githubusercontent.com/subjobway22-rgb/stella-tcg/main/media/0.5.1/result.jpg) · [로비](https://raw.githubusercontent.com/subjobway22-rgb/stella-tcg/main/media/0.5.1/lobby.jpg)\n",
+  "releaseIntro": "![스타더스트 아레나 — 홍보용 키비주얼](https://raw.githubusercontent.com/subjobway22-rgb/stella-tcg/main/media/0.5.1/hero.jpg)\n\n**[Windows PC 0.5.1 다운로드 · 약 323MB](https://github.com/subjobway22-rgb/stella-tcg/releases/download/v0.5.1/STARDUST-ARENA-PC-0.5.1.zip)**\n\n팬과 함께 아이돌을 강화하고, 한 차례 3장의 카드로 승부하는 스텔라이브 팬게임입니다. AI 연습 · 온라인 친선전 · 랭크 배틀을 지원합니다.\n\n### 실제 배틀 화면\n\n![0.5.1 실제 배틀 화면](https://raw.githubusercontent.com/subjobway22-rgb/stella-tcg/main/media/0.5.1/battle.jpg)\n\n### 내 한 수부터 승패 이유까지\n\n![0.5.1 실제 스테이지 결과 — 내 정보는 왼쪽, 상대 정보는 오른쪽](https://raw.githubusercontent.com/subjobway22-rgb/stella-tcg/main/media/0.5.1/result.jpg)\n\n[로비와 홍보 이미지 더 보기](https://github.com/subjobway22-rgb/stella-tcg/blob/main/docs/promo/README.md)\n\n---\n"
+}
+

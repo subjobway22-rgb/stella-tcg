@@ -2,16 +2,37 @@
 
 스텔라이브 팬게임 · Windows PC 카드 배틀
 
-[![스타더스트 아레나 — 너의 응원으로, 무대를 뒤집어. 홍보용 키비주얼](media/0.5.1/hero.jpg)](https://github.com/subjobway22-rgb/stella-tcg/releases/download/v0.5.1/STARDUST-ARENA-PC-0.5.1.zip)
+[![스타더스트 아레나 — 너의 응원으로, 무대를 뒤집어. 홍보용 키비주얼](media/0.5.1/hero.jpg)](https://github.com/subjobway22-rgb/stella-tcg/releases/download/v0.5.2/STARDUST-ARENA-PC-0.5.2.zip)
 
 ## 지금 플레이하기
 
-**[Windows PC 0.5.1 다운로드 · ZIP 약 323MB](https://github.com/subjobway22-rgb/stella-tcg/releases/download/v0.5.1/STARDUST-ARENA-PC-0.5.1.zip)**  
-[최신 릴리스 · 업데이트 내용](https://github.com/subjobway22-rgb/stella-tcg/releases/tag/v0.5.1) · [홍보 이미지 모음](docs/promo/README.md)
+**[Windows PC 0.5.2 다운로드 · ZIP 약 323MB](https://github.com/subjobway22-rgb/stella-tcg/releases/download/v0.5.2/STARDUST-ARENA-PC-0.5.2.zip)**  
+[최신 릴리스 · 업데이트 내용](https://github.com/subjobway22-rgb/stella-tcg/releases/tag/v0.5.2) · [홍보 이미지 모음](docs/promo/README.md)
 
 **팬과 함께 아이돌을 강화하고, 한 차례 3장의 카드로 승부하세요.**
 
 아이돌과 스타터 덱을 고른 뒤 아르냥의 안내로 시작할 수 있습니다. AI 연습, 온라인 친선전, 랭크 배틀을 지원합니다.
+
+## 0.5.2 변경 사항
+
+### 직접 뜯고, 한 장씩 공개하는 카드팩
+
+팩 윗부분을 왼쪽에서 오른쪽으로 밀어 개봉합니다. 이후 화면을 클릭할 때마다 카드가 한 장씩 공개되며 짧은 슉 효과음이 재생됩니다. 중복 카드도 공개되고, 마지막에는 전체 결과를 확인할 수 있습니다.
+
+![0.5.2 실제 화면 — 카드팩 개봉](media/0.5.2/pack-opening.jpg)
+![0.5.2 실제 화면 — 클릭마다 카드 한 장 공개](media/0.5.2/pack-reveal.jpg)
+
+### 필드에 놓이는 순간, 테두리 반짝임
+
+내 카드와 상대 카드가 필드에 전개되면 해당 카드 테두리에 짧은 반짝임과 효과음이 나옵니다. 아래는 효과가 재생되는 순간을 캡처한 화면입니다.
+
+![0.5.2 실제 화면 — 팬 카드 테두리 반짝임](media/0.5.2/field-sparkles.jpg)
+
+### 덱 편집: 3열 목록과 오른쪽 스크롤바
+
+카드 목록을 2열에서 3열로 늘리고, 오른쪽 스크롤바를 추가했습니다. 카드 정보와 추가·제거 버튼을 재배치했으며, 수량 변경 직후 스크롤이 되돌아가던 문제도 수정했습니다.
+
+![0.5.2 실제 화면 — 3열 덱 편집과 스크롤바](media/0.5.2/deck-editor.jpg)
 
 ## 한 차례의 선택이 만드는 무대
 
@@ -37,9 +58,9 @@
 2. 폴더 안의 **STARDUST Launcher.exe**를 실행합니다.
 3. 아이돌과 스타터 덱을 선택하고 아르냥의 안내로 시작하세요.
 
-Windows 10/11 64비트용입니다. 기존 사용자는 런처에서 업데이트할 수 있으며 계정·덱·랭크 데이터는 유지됩니다. 온라인·랭크에는 인터넷 연결이 필요하고, 사람과의 랜덤 매칭은 상대 플레이어가 대기 중이어야 연결됩니다. 계정 복구 코드는 별도로 보관하세요.
+Windows 10/11 64비트용입니다. 0.5.2는 위 ZIP을 내려받아 압축 해제하면 됩니다. 기존 계정·덱·랭크 데이터는 게임 폴더 외부에 저장됩니다. 온라인·랭크에는 인터넷 연결이 필요하고, 사람과의 랜덤 매칭은 상대 플레이어가 대기 중이어야 연결됩니다. 계정 복구 코드는 별도로 보관하세요.
 
-대표 배너는 홍보용 일러스트이며, 배틀·결과·로비 이미지는 0.5.1 게임 실행 화면입니다.
+대표 배너는 홍보용 일러스트이며, 변경 사항 이미지는 0.5.2 실제 실행 화면입니다. 그 아래의 배틀·결과·로비 소개 이미지는 0.5.1 화면입니다.
 
 ## 오류 제보
 

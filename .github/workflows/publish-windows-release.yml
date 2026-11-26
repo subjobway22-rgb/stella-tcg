@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
+      - uses: actions/checkout@v4
       - name: Download and verify approved package
         env:
           GH_TOKEN: ${{ github.token }}
@@ -29,9 +30,36 @@ jobs:
           curl --fail --location --retry 3 --max-time 900 "https://stellatcg-online.bigstarlab.workers.dev/downloads/$name" -o "$name"
           printf '%s  %s\n' "$expected" "$name" > "$name.sha256.txt"
           sha256sum --check "$name.sha256.txt"
+          python3 - <<'PY'
+          import hashlib,json,pathlib,re,subprocess
+          m=json.loads(pathlib.Path('release.json').read_text())
+          version=m['version']
+          expected={'pack-opening.jpg','pack-reveal.jpg','field-sparkles.jpg','deck-editor.jpg'}
+          assert {a['name'] for a in m['screenshots']}==expected
+          folder=pathlib.Path('media')/version
+          folder.mkdir(parents=True,exist_ok=True)
+          for a in m['screenshots']:
+              url=f"https://stellatcg-online.bigstarlab.workers.dev/promo/{version}/{a['name']}"
+              data=subprocess.check_output(['curl','--fail','--location','--retry','3','--max-time','90',url])
+              assert hashlib.sha256(data).hexdigest()==a['sha256'],a['name']
+              assert data[:2]==bytes([255,216])
+              (folder/a['name']).write_bytes(data)
+          pathlib.Path('README.md').write_text(m['readme'],encoding='utf-8')
+          PY
           jq -er .notes release.json > notes.md
           if gh release view "v$version" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
             echo "Release already exists; refusing to overwrite." >&2
             exit 1
           fi
-          gh release create "v$version" "$name" "$name.sha256.txt" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "스타더스트 아레나 $version" --notes-file notes.md --latest
+          gh release create "v$version" "$name" "$name.sha256.txt" media/"$version"/*.jpg --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "스타더스트 아레나 $version" --notes-file notes.md --latest
+      - name: Update download page and screenshots
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md media
+          if ! git diff --cached --quiet; then
+            git commit -m 'Add 0.5.2 download and feature screenshots'
+            git push origin HEAD:main
+          fi
